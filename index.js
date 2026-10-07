@@ -114,3 +114,76 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored(playerName) {
+    const game = gameObject();
+
+    for (let team of Object.values(game)) {
+        if (team.players[playerName]) {
+            return team.players[playerName].points;
+        }
+    }
+}
+
+function shoeSize(playerName) {
+    const game = gameObject();
+
+    for (let team of Object.values(game)) {
+        if (team.players[playerName]) {
+            return team.players[playerName].shoe;
+        }
+    }
+}
+
+console.log(numPointsScored("Alan Anderson"));
+console.log(numPointsScored("Ben Gordon"));
+
+console.log(shoeSize("Alan Anderson"));
+console.log(shoeSize("Ben Gordon"));
+
+function teamColors(teamName) {
+    const game = gameObject();
+
+    for (let team of Object.values(game)) {
+        if (team.teamName === teamName) {
+            return team.colors;
+        }
+    }
+}
+
+function teamNames() {
+    const game = gameObject();
+
+    return Object.values(game).map(team => team.teamName);
+}
+
+console.log(teamColors("Brooklyn Nets"));
+console.log(teamColors("Charlotte Hornets"));
+
+console.log(teamNames());
+function playerNumbers(teamName) {
+    const game = gameObject();
+
+    for (let team of Object.values(game)) {
+        if (team.teamName === teamName) {
+            return Object.values(team.players).map(player => player.number);
+        }
+    }
+}
+
+function playerStats(playerName) {
+    const game = gameObject();
+
+    for (let team of Object.values(game)) {
+        for (let player of Object.keys(team.players)) {
+            if (player === playerName) {
+                return team.players[player];
+            }
+        }
+    }
+}
+console.log(playerNumbers("Brooklyn Nets"));
+console.log(playerNumbers("Charlotte Hornets"));
+
+console.log(playerStats("Alan Anderson"));
+console.log(playerStats("Ben Gordon"));
